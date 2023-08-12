@@ -1,14 +1,12 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel
 from typing import List
-class FilesModel(BaseModel):
+class FilesListSchema(BaseModel):
     file_name: str
     file_url: str
     file_id: str
-
-
-class FileInfoModel(BaseModel):
+class FileInfoSchema(BaseModel):
     fibery_token: str
     app_token: str
     super_dispatch_token: str
-    super_dispatch_url: HttpUrl
-    files: List[FilesModel]
+    super_dispatch_url: str
+    files: List[FilesListSchema]

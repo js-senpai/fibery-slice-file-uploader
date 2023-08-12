@@ -1,11 +1,10 @@
-import uuid
+import uuid as uuid_pkg
 import sqlalchemy
+from sqlalchemy import Column
+from configs.db_config import Base
 
-from configs.db_config import db_metadata
 
-files_model = sqlalchemy.Table(
-    "files",
-    db_metadata,
-    sqlalchemy.Column("id", sqlalchemy.String, primary_key=True, default=str(uuid.uuid4())),
-    sqlalchemy.Column("file_id", sqlalchemy.String, nullable=False, index=True)
-)
+class FilesModel(Base):
+    __tablename__ = "files"
+    id = Column("id", sqlalchemy.String(36), primary_key=True, default=lambda: str(uuid_pkg.uuid4()))
+    file_id = Column("file_id", sqlalchemy.String(36), nullable=False, index=True)
