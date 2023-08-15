@@ -15,3 +15,5 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 app.include_router(files_router, prefix='/api/files')
 
 Base.metadata.create_all(bind=engine)
+
+application = app

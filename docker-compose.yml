@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  fibery-app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: uvicorn main:app --host 0.0.0.0 --port 80
+    env_file:
+      - .env
+    ports:
+      - 80:80
